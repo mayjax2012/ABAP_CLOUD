@@ -1,0 +1,91 @@
+managed implementation in class ZBP_R_TRAVEL08 unique;
+strict ( 2 );
+with draft;
+extensible;
+define behavior for ZR_TRAVEL08 alias Travel
+persistent table ZTRAVEL08
+extensible
+draft table ZTRAVEL_D08
+etag master LocalLastChangedAt
+lock master total etag LastChangedAt
+authorization master( global )
+{
+  field ( readonly )
+   UUID,
+   LocalCreatedBy,
+   LocalCreatedAt,
+   LocalLastChangedBy,
+   LocalLastChangedAt,
+   LastChangedAt;
+
+  field ( numbering : managed )
+   UUID;
+
+
+  create;
+  update;
+  delete;
+
+  draft action Activate optimized;
+  draft action Discard;
+  draft action Edit;
+  draft action Resume;
+  draft determine action Prepare;
+
+  mapping for ZTRAVEL08 corresponding extensible
+  {
+    UUID = UUID;
+    TravelID = TRAVEL_ID;
+    Description = DESCRIPTION;
+    TotalPrice = TOTAL_PRICE;
+    CurrencyCode = CURRENCY_CODE;
+    BeginDate = BEGIN_DATE;
+    EndDate = END_DATE;
+    Destination = DESTINATION;
+    SightseeingsTips = SIGHTSEEINGS_TIPS;
+    LocalCreatedBy = LOCAL_CREATED_BY;
+    LocalCreatedAt = LOCAL_CREATED_AT;
+    LocalLastChangedBy = LOCAL_LAST_CHANGED_BY;
+    LocalLastChangedAt = LOCAL_LAST_CHANGED_AT;
+    LastChangedAt = LAST_CHANGED_AT;
+  }
+
+  association _Booking { create; with draft; }
+
+}
+
+define behavior for ZR_BOOKING08 alias Booking
+persistent table ZBOOKING08
+extensible
+draft table ZBOOKING_D08
+etag dependent by _Travel
+lock dependent by _Travel
+authorization dependent by _Travel
+{
+  field ( readonly )
+   UUID,
+   ParentUUID;
+
+  field ( numbering : managed )
+   UUID;
+
+
+  update;
+  delete;
+
+  mapping for ZBOOKING08 corresponding extensible
+  {
+    UUID = UUID;
+    ParentUUID = PARENT_UUID;
+    BookingID = BOOKING_ID;
+    BookingText = BOOKING_TEXT;
+    BookingDate = BOOKING_DATE;
+    FlightDate = FLIGHT_DATE;
+    Price = PRICE;
+    CurrencyCode = CURRENCY_CODE;
+    DiscountedFlightPrice = DISCOUNTED_FLIGHT_PRICE;
+  }
+
+  association _Travel { with draft; }
+
+}

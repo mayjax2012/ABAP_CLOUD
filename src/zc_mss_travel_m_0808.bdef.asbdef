@@ -1,0 +1,20 @@
+projection implementation in class ZBP_C_MSS_TRAVEL_M_0808 unique;
+strict ( 2 );
+extensible;
+use draft;
+use side effects;
+define behavior for ZC_MSS_TRAVEL_M_0808 alias ZcMssTravelM0808
+extensible
+use etag
+{
+  use create;
+  use update;
+  use delete;
+
+  use action Edit;
+  use action Activate;
+  use action Discard;
+  use action Resume;
+  use action Prepare;
+
+}

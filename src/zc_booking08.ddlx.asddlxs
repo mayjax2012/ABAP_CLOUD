@@ -1,0 +1,123 @@
+@Metadata.layer: #CORE
+@UI.headerInfo.title.type: #STANDARD
+@UI.headerInfo.title.value: 'BookingID'
+@UI.headerInfo.description.type: #STANDARD
+@UI.headerInfo.description.value: 'BookingID'
+annotate view ZC_BOOKING08 with
+{
+  @EndUserText.label: 'UUID'
+  @UI.identification: [ {
+    position: 10 , 
+    label: 'UUID'
+  } ]
+  @UI.lineItem: [ {
+    position: 10 , 
+    label: 'UUID'
+  } ]
+  @UI.selectionField: [ {
+    position: 10 
+  } ]
+  UUID;
+  
+  @EndUserText.label: 'ParentUUID'
+  @UI.facet: [ {
+    label: 'General Information', 
+    id: 'GeneralInfo', 
+    purpose: #STANDARD, 
+    position: 20 , 
+    type: #IDENTIFICATION_REFERENCE
+  } ]
+  @UI.identification: [ {
+    position: 20 , 
+    label: 'ParentUUID'
+  } ]
+  @UI.lineItem: [ {
+    position: 20 , 
+    label: 'ParentUUID'
+  } ]
+  @UI.selectionField: [ {
+    position: 20 
+  } ]
+  ParentUUID;
+  
+  @EndUserText.label: 'BookingID'
+  @UI.identification: [ {
+    position: 30 , 
+    label: 'BookingID'
+  } ]
+  @UI.lineItem: [ {
+    position: 30 , 
+    label: 'BookingID'
+  } ]
+  @UI.selectionField: [ {
+    position: 30 
+  } ]
+  BookingID;
+  
+  @EndUserText.label: 'BookingText'
+  @UI.identification: [ {
+    position: 40 , 
+    label: 'BookingText'
+  } ]
+  @UI.lineItem: [ {
+    position: 40 , 
+    label: 'BookingText'
+  } ]
+  @UI.selectionField: [ {
+    position: 40 
+  } ]
+  BookingText;
+  
+  @EndUserText.label: 'BookingDate'
+  @UI.identification: [ {
+    position: 50 , 
+    label: 'BookingDate'
+  } ]
+  @UI.lineItem: [ {
+    position: 50 , 
+    label: 'BookingDate'
+  } ]
+  @UI.selectionField: [ {
+    position: 50 
+  } ]
+  BookingDate;
+  
+  @EndUserText.label: 'FlightDate'
+  @UI.identification: [ {
+    position: 60 , 
+    label: 'FlightDate'
+  } ]
+  @UI.lineItem: [ {
+    position: 60 , 
+    label: 'FlightDate'
+  } ]
+  @UI.selectionField: [ {
+    position: 60 
+  } ]
+  FlightDate;
+  
+  @EndUserText.label: 'Price'
+  @UI.identification: [ {
+    position: 70 , 
+    label: 'Price'
+  } ]
+  @UI.lineItem: [ {
+    position: 70 , 
+    label: 'Price'
+  } ]
+  @UI.selectionField: [ {
+    position: 70 
+  } ]
+  Price;
+  
+  @UI.identification: [ {
+    position: 80 
+  } ]
+  @UI.lineItem: [ {
+    position: 80 
+  } ]
+  @UI.selectionField: [ {
+    position: 80 
+  } ]
+  DiscountedFlightPrice;
+}
